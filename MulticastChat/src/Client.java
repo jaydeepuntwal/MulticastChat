@@ -35,8 +35,7 @@ public class Client extends Thread {
 
 					sock.send(sendPacket);
 					Thread.sleep(1000);
-					sock.close();
-					scan.close();
+
 				}
 
 			} catch (Exception e) {
@@ -58,8 +57,7 @@ public class Client extends Thread {
 					String response = new String(recBuf);
 					response = response.substring(0, recPacket.getLength());
 					System.out.println(response);
-					sock.leaveGroup(InetAddress.getByName(hostAddr));
-					sock.close();
+
 				}
 
 			} catch (Exception e) {
