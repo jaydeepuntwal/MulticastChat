@@ -9,6 +9,7 @@ public class Client extends Thread {
 	String type;
 	static String hostAddr;
 	static int port;
+	static MulticastSocket sock;
 
 	Client(String type) {
 		this.type = type;
@@ -27,7 +28,6 @@ public class Client extends Thread {
 					Scanner scan = new Scanner(System.in);
 					String test = scan.nextLine();
 
-					MulticastSocket sock = new MulticastSocket();
 					byte[] sendBuf = test.getBytes();
 					DatagramPacket sendPacket = new DatagramPacket(sendBuf,
 							sendBuf.length, InetAddress.getByName(hostAddr),
@@ -50,7 +50,6 @@ public class Client extends Thread {
 			try {
 
 				while (true) {
-					MulticastSocket sock = new MulticastSocket(port);
 					sock.joinGroup(InetAddress.getByName(hostAddr));
 					byte[] recBuf = new byte[1024];
 					DatagramPacket recPacket = new DatagramPacket(recBuf,
@@ -77,6 +76,7 @@ public class Client extends Thread {
 			InterruptedException {
 		hostAddr = args[0];
 		port = Integer.parseInt(args[1]);
+		sock = new MulticastSocket(port);
 		Client s = new Client("Send");
 		Client r = new Client("Receive");
 		s.start();
