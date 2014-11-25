@@ -56,7 +56,7 @@ public class Client extends Thread {
 							recBuf.length);
 					sock.receive(recPacket);
 					String response = new String(recBuf);
-					response.trim();
+					response = response.substring(0,recPacket.getLength());
 					System.out.println(response);
 					sock.leaveGroup(InetAddress.getByName(hostAddr));
 					sock.close();
