@@ -26,7 +26,7 @@ public class Sender extends Thread {
 				byte[] sendBuf = test.getBytes();
 				DatagramPacket sendPacket = new DatagramPacket(sendBuf,
 						sendBuf.length,
-						InetAddress.getByName("255.255.255.255"), 5555);
+						InetAddress.getByName("192.168.2.255"), port);
 
 				sock.send(sendPacket);
 				Thread.sleep(1000);
