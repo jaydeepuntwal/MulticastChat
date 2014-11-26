@@ -3,7 +3,7 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-public class MulticastSender implements Runnable {
+public class MulticastSender extends Thread {
 
 	MulticastSocket sock;
 	String hostAddr;
@@ -21,7 +21,7 @@ public class MulticastSender implements Runnable {
 
 			while (true) {
 
-				String test = "Hello";
+				String test = InetAddress.getLocalHost().getHostAddress();
 				byte[] sendBuf = test.getBytes();
 				DatagramPacket sendPacket = new DatagramPacket(sendBuf,
 						sendBuf.length, InetAddress.getByName(hostAddr), port);

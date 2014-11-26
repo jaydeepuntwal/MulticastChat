@@ -10,7 +10,7 @@ public class Client {
 		MulticastSender sender = new MulticastSender(hostAddr, port);
 		MulticastReceiver receiver = new MulticastReceiver(hostAddr, port);
 
-		sender.run();
-		receiver.run();
+		sender.start();
+		receiver.start();
 	}
 }
