@@ -21,7 +21,6 @@ public class MulticastReceiver implements Runnable {
 						recBuf.length);
 				sock.receive(recPacket);
 				String response = new String(recBuf);
-				response = response.substring(0, recPacket.getLength());
 				System.out.println(response);
 			}
 
