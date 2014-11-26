@@ -11,6 +11,7 @@ public class Sender extends Thread {
 
 	public Sender(String hostAddr, int port) throws IOException {
 		sock = new DatagramSocket();
+		sock.setBroadcast(true);
 		this.hostAddr = hostAddr;
 		this.port = port;
 	}
