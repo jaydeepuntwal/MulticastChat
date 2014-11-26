@@ -1,16 +1,16 @@
 import java.io.IOException;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.MulticastSocket;
 
-public class MulticastSender extends Thread {
+public class Sender extends Thread {
 
-	MulticastSocket sock;
+	DatagramSocket sock;
 	String hostAddr;
 	int port;
 
-	public MulticastSender(String hostAddr, int port) throws IOException {
-		sock = new MulticastSocket();
+	public Sender(String hostAddr, int port) throws IOException {
+		sock = new DatagramSocket();
 		this.hostAddr = hostAddr;
 		this.port = port;
 	}

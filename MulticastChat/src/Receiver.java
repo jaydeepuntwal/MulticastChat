@@ -1,15 +1,13 @@
 import java.io.IOException;
 import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
+import java.net.DatagramSocket;
 
-public class MulticastReceiver extends Thread {
+public class Receiver extends Thread {
 
-	MulticastSocket sock;
+	DatagramSocket sock;
 
-	public MulticastReceiver(String hostAddr, int port) throws IOException {
-		this.sock = new MulticastSocket(port);
-		sock.joinGroup(InetAddress.getByName(hostAddr));
+	public Receiver(String hostAddr, int port) throws IOException {
+		this.sock = new DatagramSocket(port);
 	}
 
 	@Override
@@ -21,7 +19,7 @@ public class MulticastReceiver extends Thread {
 						recBuf.length);
 				sock.receive(recPacket);
 				String response = new String(recBuf);
-				response = response.substring(0,recPacket.getLength());
+				response = response.substring(0, recPacket.getLength());
 				System.out.println(response);
 			}
 
