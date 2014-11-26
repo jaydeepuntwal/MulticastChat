@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.util.Scanner;
 
 public class MulticastSender implements Runnable {
 
@@ -22,17 +21,13 @@ public class MulticastSender implements Runnable {
 
 			while (true) {
 
-				Scanner scan = new Scanner(System.in);
-				String test = scan.nextLine();
-
+				String test = "Hello";
 				byte[] sendBuf = test.getBytes();
 				DatagramPacket sendPacket = new DatagramPacket(sendBuf,
 						sendBuf.length, InetAddress.getByName(hostAddr), port);
 
 				sock.send(sendPacket);
 				Thread.sleep(1000);
-
-				scan.close();
 
 			}
 
